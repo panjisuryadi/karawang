@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Redirect ke http jika HTTPS tidak aktif, tapi hanya jika URL tidak diawali /krw/
+RewriteCond %{HTTPS} !=on
+RewriteCond %{REQUEST_URI} !^/krw/
+RewriteRule ^(.*)$ http://%{SERVER_NAME}/krw/$1 [R=301,L]
+
+# Aturan internal rewrite untuk modul
+RewriteRule ^([^\.]+)$ index.php?mod=$1 [NC,L]
