@@ -1,5 +1,5 @@
 <?php
-#error_reporting(0);
+error_reporting(1);
 session_start();
 
 define("__title__", "Dashboard EVA");
@@ -13,7 +13,7 @@ $bot_name		= (array_key_exists('bot_name', $_SESSION) ? $_SESSION['bot_name'] : 
 $bot_acc_db		= (array_key_exists('bot_acc_db', $_SESSION) ? $_SESSION['bot_acc_db'] : '');
 
 $acc_bot		= $bot_idx;
-
+$url_api 	= "http://localhost/pdam_karawang_api/";
 $tampil		= "";
 $s_page		= "";
 $tablena	= "";
@@ -26,7 +26,6 @@ $arr_plat	= array("3"=>"web","5"=>"telegram","6"=>"fb","8"=>"line","15"=>"whatsa
 
 function max30hari($tgl_awal, $url){
 	// 166606453671983003
-	mlog('max', json_encode($_SESSION, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
 	
 	$date1 = new DateTime(date('Y-m-d'));
 	$date2 = new DateTime($tgl_awal);
@@ -251,7 +250,7 @@ function tampil($temp_body='',$temp_ket='',$temp_js='',$temp_css=''){
 	if($temp_body){
 		$uri_body	= $_SERVER['REQUEST_URI'];
 		$ex_uri		= explode("/",$uri_body);
-		$temp_body	= file_get_html($_SERVER['BASE_URL']."models/".$ex_uri[2]."/views/".$temp_body.".php");
+		// $temp_body	= file_get_html($_SERVER['BASE_URL']."models/".$ex_uri[2]."/views/".$temp_body.".php");
 		#$temp_body	= file_get_html($_SERVER['BASE_URL']."models/".$ex_uri[3]."/views/".$temp_body.".php"); #eva.id/cs/
 		#$tampil		= str_replace("<!-- temp_body -->",$_SERVER['BASE_URL']."models/".$ex_uri[2]."/views/".$temp_body.".php",$tampil);
 		$tampil		= str_replace("<!-- temp_body -->",$temp_body,$tampil);
@@ -1030,6 +1029,58 @@ function paginate($item_per_page, $current_page, $total_records, $total_pages, $
         $pagination .= '</ul>'; 
     }
     return $pagination; //return pagination links
+}
+
+function logs($teks){
+    // die();
+    $basename   = $_SERVER["SCRIPT_FILENAME"];
+    $basename   = explode('/', $basename);
+    $nama   = str_replace('.php', '', end($basename));
+    $bt     = debug_backtrace();
+    $caller = array_shift($bt);
+    $line   = $caller['line'];
+    $jamtgl = date("YmdHis");
+    $date   = date("Ymd");
+    $teksna = $jamtgl.'|'.$line.'= '.$teks.PHP_EOL;
+    $myfile = fopen("/Applications/XAMPP/htdocs/pdam_karawng/logs/".$date.'_'.$nama.".log", "a+") or die("Unable to open file!");
+    
+    fwrite($myfile, $teksna);
+
+    fclose($myfile);
+    return true;
+}
+function errors($teks){
+    // die();
+    $basename   = $_SERVER["SCRIPT_FILENAME"];
+    $basename   = explode('/', $basename);
+    $nama   = 'error_'.str_replace('.php', '', end($basename));
+    $bt     = debug_backtrace();
+    $caller = array_shift($bt);
+    $line   = $caller['line'];
+    $jamtgl = date("YmdHis");
+    $date   = date("Ymd");
+    $teksna = $jamtgl.'|'.$line.'= '.$teks.PHP_EOL;
+    $myfile = fopen("/Applications/XAMPP/htdocs/pdam_karawng/logs_error/".$date.'_'.$nama.".log", "a+") or die("Unable to open file!");
+    
+    fwrite($myfile, $teksna);
+
+    fclose($myfile);
+    return true;
+}
+
+function mlog($nama, $teks){
+    // die();
+    $jamtgl = date("YmdHis");
+    $date   = date("Ymd");
+    $teksna = $jamtgl.'= '.$teks.PHP_EOL;
+    #TUTUP TULIS FILE DULU
+	
+	$myfile = fopen("/Applications/XAMPP/htdocs/pdam_karawng/logs/".$date.'_'.$nama.".log", "a+") or die("Unable to open file!");
+    
+    fwrite($myfile, $teksna);
+
+    fclose($myfile);
+    return true;
 }
 
 function paging($url, $page, $rownya, $maxnya=25, $cari=''){

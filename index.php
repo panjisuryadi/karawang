@@ -68,6 +68,9 @@ $act	  = regis("act");
     <link href="vendors/leaflet/leaflet.css" rel="stylesheet">
     <link href="vendors/leaflet.markercluster/MarkerCluster.css" rel="stylesheet">
     <link href="vendors/leaflet.markercluster/MarkerCluster.Default.css" rel="stylesheet">
+    <!-- ADD ON -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <!-- END ADD ON -->
   </head>
 
 
@@ -1541,12 +1544,18 @@ $act	  = regis("act");
       
       <!-- CONTENT HERE -->
       <?php
+      $template = '';
+      $act  = regis('act');
+      $db   = regis('db', 167116906433128094);
+      $bot   = regis('bot', 167116906433373188);
+      $bot_idx   = regis('bot_idx', 167116906433373188);
       if(empty($modul)){
 
       }else{
         $mod  = 'modules/'.$modul.'.php';
         include($mod);
       }
+      echo $template;
       ?>
       <!-- END CONTENT -->
 
@@ -1882,6 +1891,6 @@ $act	  = regis("act");
     <script src="vendors/echarts/echarts.min.js"></script>
     <script src="assets/js/ecommerce-dashboard.js"></script>
 
+    
   </body>
-
 </html>

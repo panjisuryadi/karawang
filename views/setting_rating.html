@@ -1,0 +1,39 @@
+<div class="content">
+    <h2 data-anchor="data-anchor" id="responsive-tables">Setting Rating <a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="#" href="#responsive-tables" style="margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
+    <div class="card shadow-none border my-5" data-component-card="data-component-card">
+        <div class="card-body p-4">
+            <form action="./setting_rating" method="post">
+                <div class="form-group">
+                    <label for="">Status</label>
+                    <input type="hidden" name="act" value="update">
+                    <select name="status" id="status" class="form-control">
+                        <!-- option_status -->
+                    </select>
+                </div>
+                <div class="form-group mt-1">
+                    <label for="">Kata Pembuka</label>
+                    <textarea name="pembuka" id="pembuka" class="form-control"><!-- pembuka --></textarea>
+                </div>
+                <div class="form-group mt-1">
+                    <label for="">Kata Penutup</label>
+                    <textarea name="penutup" id="penutup" class="form-control"><!-- penutup --></textarea>
+                </div>
+                <div class="form-group mt-1">
+                    <label for="">Rating 1</label>
+                    <input type="text" name="rating_1" class="form-control" value="<!-- rating_1 -->">
+                </div>
+                <div class="form-group mt-1">
+                    <label for="">Rating 2</label>
+                    <input type="text" name="rating_2" class="form-control" value="<!-- rating_2 -->">
+                </div>
+                <div class="form-group mt-1">
+                    <label for="">Rating 3</label>
+                    <input type="text" name="rating_3" class="form-control" value="<!-- rating_3 -->">
+                </div>
+                <div class="form-group mt-1">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
