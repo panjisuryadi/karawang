@@ -1,0 +1,175 @@
+<div class="content">
+    <h2 data-anchor="data-anchor" id="responsive-tables">Unanswered Response <a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="#" href="#responsive-tables" style="margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
+    <div class="card shadow-none border my-5" data-component-card="data-component-card">
+        <div class="card-header p-4 border-bottom bg-body">
+            <div class="row g-3 justify-content-between align-items-end">
+                <div class="col-12 col-md">
+                    <h4 class="text-body mb-0" data-anchor="data-anchor" id="always-responsive">Always responsive<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="#" href="#always-responsive" style="margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h4>
+                    <p class="mb-0 mt-2 text-body-secondary">Across every breakpoint, use <code>.table-responsive</code> for horizontally scrolling tables.</p>
+                </div>
+                <div class="col col-md-auto">
+                    <nav class="nav justify-content-end doc-tab-nav align-items-center" role="tablist">
+                        <!-- <button class="btn btn-link px-2 text-body copy-code-btn" type="button">
+                            <svg class="svg-inline--fa fa-copy me-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="copy" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
+                                <path fill="currentColor" d="M208 0H332.1c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9V336c0 26.5-21.5 48-48 48H208c-26.5 0-48-21.5-48-48V48c0-26.5 21.5-48 48-48zM48 128h80v64H64V448H256V416h64v48c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V176c0-26.5 21.5-48 48-48z"></path>
+                            </svg>
+                            Copy Code
+                        </button> -->
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#verticallyCentered">+ Add</button>
+                        <!-- <a class="btn btn-sm btn-phoenix-primary code-btn ms-2 collapsed" data-bs-toggle="collapse" href="#always-responsive-code" role="button" aria-controls="always-responsive-code" aria-expanded="false"> 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-code me-2">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            View code
+                        </a>
+                        <a class="btn btn-sm btn-phoenix-primary preview-btn ms-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye me-2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>Hide code
+                        </a> -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive scrollbar p-4">
+                <table class="table" id="datatable" >
+                    <thead>
+                        <tr>
+                            <th class="text-center" scope="col">No</th>
+                            <th scope="col">Jawaban</th>
+                            <th scope="col">#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- table -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL ADD -->
+<div class="modal fade" id="verticallyCentered" tabindex="-1" aria-labelledby="verticallyCenteredModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="verticallyCenteredModalLabel">Add Unanswered Response</h5>
+                <button class="btn btn-close p-1" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="./unanswerd" method="post">
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label for="">Tipe Jawaban 1</label>
+                            <input type="hidden" name="act" value="insert">
+                            <select name="tipe_0" id="tipe_0" onchange="tipe_jawaban(0);" class="form-control">
+                                <option value="">Tipe Jawaban</option>
+                                <option value="text">Text</option>
+                                <option value="image">Image</option>
+                            </select>
+                        </div>
+                        <div class="col-8">
+                            <div id="text_0" style="display: none;">
+                                <label for="">Masukan Text Jawaban</label>
+                                <div class="float-left">
+                                    <button type="button" class="btn btn-success btn-sm" onclick="input_button(0, '__keyword__');">[ Keyword ]</button>
+                                    <button type="button" class="btn btn-success btn-sm" onclick="input_button(0, '__user_nick__');">[ Usernick ]</button>
+                                    <button type="button" class="btn btn-success btn-sm" onclick="input_button(0, '__bot_name__');">[ Botname ]</button>
+                                </div>
+                                <textarea name="text_0" id="textarea_0" class="form-control"></textarea>
+                            </div>
+                            <div id="image_0" style="display: none;">
+                                <label for="">Upload Image</label>
+                                <input type="file" name="file_0" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <label for="">Tipe Jawaban 2</label>
+                            <select name="tipe_1" id="tipe_1" onchange="tipe_jawaban(1);" class="form-control">
+                                <option value="">Tipe Jawaban</option>
+                                <option value="text">Text</option>
+                                <option value="image">Image</option>
+                            </select>
+                        </div>
+                        <div class="col-8">
+                            <div id="text_1" style="display: none;">
+                                <label for="">Masukan Text Jawaban</label>
+                                <div class="float-left">
+                                    <button type="button" class="btn btn-success btn-sm" onclick="input_button(1, '__keyword__');">[ Keyword ]</button>
+                                    <button type="button" class="btn btn-success btn-sm" onclick="input_button(1, '__user_nick__');">[ Usernick ]</button>
+                                    <button type="button" class="btn btn-success btn-sm" onclick="input_button(1, '__bot_name__');">[ Botname ]</button>
+                                </div>
+                                <textarea name="text_1" id="textarea_1" class="form-control"></textarea>
+                            </div>
+                            <div id="image_1" style="display: none;">
+                                <label for="">Upload Image</label>
+                                <input type="file" name="file_1" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <label for="">Tipe Jawaban 3</label>
+                            <select name="tipe_2" id="tipe_2" onchange="tipe_jawaban(2);" class="form-control">
+                                <option value="">Tipe Jawaban</option>
+                                <option value="text">Text</option>
+                                <option value="image">Image</option>
+                            </select>
+                        </div>
+                        <div class="col-8">
+                            <div id="text_2" style="display: none;">
+                                <label for="">Masukan Text Jawaban</label>
+                                <div class="float-left">
+                                    <button type="button" class="btn btn-success btn-sm" onclick="input_button(2, '__keyword__');">[ Keyword ]</button>
+                                    <button type="button" class="btn btn-success btn-sm" onclick="input_button(2, '__user_nick__');">[ Usernick ]</button>
+                                    <button type="button" class="btn btn-success btn-sm" onclick="input_button(2, '__bot_name__');">[ Botname ]</button>
+                                </div>
+                                <textarea name="text_2" id="textarea_2" class="form-control"></textarea>
+                            </div>
+                            <div id="image_2" style="display: none;">
+                                <label for="">Upload Image</label>
+                                <input type="file" name="file_2" class="form-control">
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                    <button class="btn btn-outline-primary" type="button" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ADD ON -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<!-- END ADD ON -->
+<script>
+function input_button(id, button){
+    let text    = $("#textarea_"+id).val();
+    $("#textarea_"+id).val(text+button);
+}
+
+function tipe_jawaban(id){
+    let tipe    = $("#tipe_"+id).val();
+    if(tipe == 'text'){
+        $("#text_"+id).show();
+        $("#image_"+id).hide();
+    }else if(tipe == 'image'){
+        $("#text_"+id).hide();
+        $("#image_"+id).show();
+    }else{
+        $("#text_"+id).hide();
+        $("#image_"+id).hide();
+    }
+}
+
+</script>
